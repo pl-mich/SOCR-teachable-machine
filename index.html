@@ -3,40 +3,62 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SOCR Teachable Machine</title>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!-- Import TensorFlow.js -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+	<!-- Import tfjs-vis -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+	<!-- Import papaparse-->
 	<script src="node_modules/papaparse/papaparse.min.js"></script>
-<!--	<script src="papaparse.min.js"></script>-->
 	<!-- Import the main script file -->
 	<script src="script.js" type="module"></script>
-<!--	<script type="module">-->
-<!--		// require(script.js);-->
-<!--		console.log("from the HTML page!")-->
-<!--		console.log(anInteger)-->
-<!--	</script>-->
 </head>
 
 <body>
 
 <div id="titleContainer">
 	<h1>SOCR Teachable Machine</h1>
-	<p>Work in progress!</p>
+	<h3>Future goals</h3>
+	<p>Listed in order of precedence</p>
+	<ul>
+		<li> Fully customizable model parameters
+		<li> TensorBoard visualization
+		<li> Multiple inputs
+		<li> Convert string labels into numbers
+		<li> Pre-configured transfer learning models
+	</ul>
+
+	<h3>Known issues</h3>
+	<ul>
+		<li> Let's face it. I may be a rookie programmer, but I am even less of a
+			UI designer.
+		<li> Only csv (comma-separated values) files are supported. Support for
+		tsv will be added in the near future.
+		<li> Only numerical features/labels are supported at this point
+		<li> Only one input and one output are supported at this point
+		<li> No user interface
+		<li> The applet would drop entire rows when it detects an undefined value
+		(with a null string) in those rows.
+	</ul>
 </div>
+
+<hr>
 
 <div id = "fileInputContainer">
 	<label for="fileInput">Choose file to upload<br/></label>
-	<input id="fileInput" type="file"/>
+	<input id="fileInput" type="file"
+	       accept="text/csv, .csv, .tsv, text/csv-schema"/>
 </div>
 
 <div id="fileInfoContainer"></div>
 
-<div id="submitContainer">
-	<button id="submitButton">Submit</button>
-</div>
-
 <div id="attributesContainer">
-	<button id="viewFile">Load Attributes</button>
+	<button id="viewFile">Submit</button>
 	<div id="fileContentContainer"></div>
 </div>
+
+<hr>
 
 <div id="featureSelectionContainer">
 	<label for="featureSelection">Choose feature: </label>
@@ -48,16 +70,33 @@
 	<select name="labelSelection" id="labelSelection"></select>
 </div>
 
-<div id="dropdownDemo">
-	<label for="cars">Choose a car:</label>
-	<select name="cars" id="cars">
-		<option value="volvo">Volvo</option>
-		<option value="saab">Saab</option>
-		<option value="mercedes">Mercedes</option>
-		<option value="audi">Audi</option>
-	</select>
+<div id="confirmSelectionContainer">
+	<button id="confirmSelection">Confirm</button>
+	<div id="loadComplete"></div>
 </div>
 
+<hr>
+
+<div id="trainingContainer">
+	<label for="optimizerSelector">Choose optimizer</label>
+	<select id="optimizerSelector" name="optimizerSelector"></select><br>
+	<label for="lossSelector">Choose loss function</label>
+	<select id="lossSelector" name="lossSelector"></select><br>
+	<label for="metricSelector">Choose metrics</label>
+	<select id="metricSelector" name="metricSelector"></select><br>
+	<label for="batchSize">Enter number of data items for each batch</label>
+	<input type="text" id="batchSize" name="batchSize"/><br>
+	<label for="epochNumber">Enter number of training epochs</label>
+	<input type="text" id="epochNumber" name="epochNumber"/><br>
+	<button id="trainingStarter">Start Training</button>
+	<div id="trainingOutput"></div>
+</div>
+
+<hr>
+
+<div id="testingContainer">
+	<button id="testingStarter">Test Model</button>
+</div>
 
 </body>
 </html>
