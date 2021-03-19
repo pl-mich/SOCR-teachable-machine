@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SOCR Teachable Machine</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="node_modules/papaparse/papaparse.min.js"></script>
+<!--	<script src="papaparse.min.js"></script>-->
+	<!-- Import the main script file -->
+	<script src="script.js" type="module"></script>
+<!--	<script type="module">-->
+<!--		// require(script.js);-->
+<!--		console.log("from the HTML page!")-->
+<!--		console.log(anInteger)-->
+<!--	</script>-->
+</head>
+
+<body>
+
+<div id="titleContainer">
+	<h1>SOCR Teachable Machine</h1>
+	<p>Work in progress!</p>
+</div>
+
+<div id = "fileInputContainer">
+	<label for="fileInput">Choose file to upload<br/></label>
+	<input id="fileInput" type="file"/>
+</div>
+
+<div id="fileInfoContainer"></div>
+
+<div id="submitContainer">
+	<button id="submitButton">Submit</button>
+</div>
+
+<div id="attributesContainer">
+	<button id="viewFile">Load Attributes</button>
+	<div id="fileContentContainer"></div>
+</div>
+
+<div id="featureSelectionContainer">
+	<label for="featureSelection">Choose feature: </label>
+	<select name="featureSelection" id="featureSelection"></select>
+</div>
+
+<div id="labelSelectionContainer">
+	<label for="labelSelection">Choose label: </label>
+	<select name="labelSelection" id="labelSelection"></select>
+</div>
+
+<div id="dropdownDemo">
+	<label for="cars">Choose a car:</label>
+	<select name="cars" id="cars">
+		<option value="volvo">Volvo</option>
+		<option value="saab">Saab</option>
+		<option value="mercedes">Mercedes</option>
+		<option value="audi">Audi</option>
+	</select>
+</div>
+
+
+</body>
+</html>
